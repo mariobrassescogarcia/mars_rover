@@ -89,3 +89,35 @@ goForward(myRover);
 goForward(myRover);
 turnLeft(myRover);
 goBackward(myRover);
+
+
+
+var command = prompt("Send a new command for the Rover: (f) for go forward, (b) for go back, (r) for turn right, (l) for turn left")
+var command_line = command.split("")
+
+for (var i = 0; i < command_line.length; i++) {
+  if (command_line[i] === "f") {
+    goForward(myRover)
+  };
+
+  else if (command_line[i] === "b") {
+    goBackward(myRover)
+  };
+
+  else if (command_line[i] === "r") {
+    turnRight(myRover)
+  }
+
+  else {
+    turnLeft(myRover)
+  }
+
+};
+
+
+
+
+
+
+
+
