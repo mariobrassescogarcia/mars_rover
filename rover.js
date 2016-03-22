@@ -15,7 +15,7 @@ var myRover = {
 var obstacles = [
 
     { "name": "Volcano",
-      "position": [4,0]
+      "position": [5,0]
     },
 
     { "name": "Lake",
@@ -66,7 +66,7 @@ function goForward(rover) {
             rover.position[0] = 0
            }
         else {
-                    var accident = free_space(rover.position[0], rover.position[1])
+                    var accident = free_space(rover.position[0] + 1, rover.position[1])
                      if ( accident === true ) {
                         alert(myRover.name + " has crashed with an obstacle. GAME OVER!")
                       }
