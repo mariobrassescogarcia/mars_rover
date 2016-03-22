@@ -47,7 +47,6 @@ function goForward(rover) {
         else {
               rover.position[0]-- 
         }
-
       break;
 
       case 'W':
@@ -56,8 +55,7 @@ function goForward(rover) {
         }
         else {
               rover.position[1]--
-        }
-       
+        }  
       break;
     }
 
@@ -66,18 +64,43 @@ function goForward(rover) {
 
 
 function goBackward(rover) {
+
   switch(rover.direction) {
+
     case 'N':
-      rover.position[0]--
+      if (rover.position[0] === 0) {
+          rover.position[0] = 9
+      }
+      else {
+          rover.position[0]--
+      }  
       break;
+
     case 'E':
-      rover.position[1]--
+      if (rover.position[1] === 0) {
+          rover.position[1] = 9
+      } 
+      else {
+          rover.position[1]--
+      }
       break;
+
     case 'S':
-      rover.position[0]++
+      if (rover.position[0] === 9) {
+          rover.position[0] = 0
+      }
+      else {
+          rover.position[0]++     
+      }
       break;
+
     case 'W':
-      rover.position[1]++
+      if (rover.position[1] === 9 ) {
+          rover.position[1] = 0
+      }
+      else {
+          rover.position[1]++        
+      }
       break;
   };
 
@@ -103,6 +126,7 @@ function turnRight(rover) {
     }
 
       console.log("New Rover Direction: [" + rover.direction + "]")
+      console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]")
 
 }
 
@@ -125,6 +149,7 @@ function turnLeft(rover) {
   };
 
   console.log("New Rover Direction: [" + rover.direction + "]")
+  console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]")
 }
 
 // ------------------------------------------------------------------------------------
