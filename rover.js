@@ -10,23 +10,41 @@ var myRover = {
 };
 
 
-// Define obstacles objects
+// Define the list of obstacles objects inside the map
 
-var volcano = {
-  name: "Volcano"
-  position: [5,6]
+var obstacles = [
+
+    { "name": "Volcano",
+      "position": [4,0]
+    },
+
+    { "name": "Lake",
+      "position": [9,3]
+    },
+
+    { "name": "Volcano",
+      "position": [1,8]
+    }
+  ];
+
+
+
+// Define a function to check space availability. Parameters of this function will be the ones obtained by the movement functions.
+
+function free_space(y,x) {
+  var crash
+  for (var index = 0; index < obstacles.length; index++) {
+      if ((obstacles[index].position[0] === y ) && (obstacles[index].position[1] === x)) {
+        crash = true;
+        return crash
+      }
+
+      else {
+        crash = false
+        return crash
+      } 
+  }
 }
-
-var lake = {
-  name: "Lake"
-  position: [9,3]
-}
-
-var mountain = {
-  name: "Mountain"
-  position: [1,8]
-}
-
 
 
 
@@ -46,10 +64,18 @@ function goForward(rover) {
       case 'N':
         if (rover.position[0] === 9) {
             rover.position[0] = 0
-        }
+           }
         else {
-              rover.position[0]++
-        }
+                    var accident = free_space(rover.position[0], rover.position[1])
+                     if ( accident === true ) {
+                        alert(myRover.name + " has crashed with an obstacle. GAME OVER!")
+                      }
+
+                     else {
+                        rover.position[0]++
+                      }
+             }
+      
       break;
       
       case 'E':
@@ -57,7 +83,14 @@ function goForward(rover) {
             rover.position[1] = 0
         }
         else {
-              rover.position[1]++
+                free_space(rover.position[0], rover.position[1])
+                     if (crash = true) {
+                        alert(myRover.name + " has crashed with an obstacle. GAME OVER!")
+                      }
+
+                     else {
+                rover.position[1]++
+                      }
         }        
       break;
       
