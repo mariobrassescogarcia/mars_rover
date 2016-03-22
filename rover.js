@@ -10,6 +10,27 @@ var myRover = {
 };
 
 
+// Define obstacles objects
+
+var volcano = {
+  name: "Volcano"
+  position: [5,6]
+}
+
+var lake = {
+  name: "Lake"
+  position: [9,3]
+}
+
+var mountain = {
+  name: "Mountain"
+  position: [1,8]
+}
+
+
+
+
+
 // Define the functions for myRover object: forward, backward, turn-left and turn-right
 
 
