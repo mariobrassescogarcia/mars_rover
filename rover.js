@@ -15,7 +15,7 @@ var myRover = {
 var obstacles = [
 
     { "name": "Volcano",
-      "position": [5,0]
+      "position": [0,8]
     },
 
     { "name": "Lake",
@@ -66,6 +66,9 @@ function goForward(rover) {
             rover.position[0] = 0
            }
         else {
+
+// Check if the next position is occupied by an object. Added +1 for that purpose in index = 0 as it is going N direction.
+
                     var accident = free_space(rover.position[0] + 1, rover.position[1])
                      if ( accident === true ) {
                         alert(myRover.name + " has crashed with an obstacle. GAME OVER!")
@@ -75,7 +78,6 @@ function goForward(rover) {
                         rover.position[0]++
                       }
              }
-      
       break;
       
       case 'E':
@@ -83,13 +85,14 @@ function goForward(rover) {
             rover.position[1] = 0
         }
         else {
-                free_space(rover.position[0], rover.position[1])
-                     if (crash = true) {
+
+                    var accident = free_space(rover.position[0], rover.position[1] + 1)
+                     if ( accident === true ) {
                         alert(myRover.name + " has crashed with an obstacle. GAME OVER!")
                       }
 
                      else {
-                rover.position[1]++
+                        rover.position[1]++
                       }
         }        
       break;
@@ -99,7 +102,14 @@ function goForward(rover) {
             rover.position[0] = 9
         }
         else {
-              rover.position[0]-- 
+                    var accident = free_space(rover.position[0] - 1, rover.position[1])
+                    if ( accident === true ) {
+                        alert(myRover.name + " has crashed with an obstacle. GAME OVER!")
+                      }
+
+                    else {
+                         rover.position[0]-- 
+                    }  
         }
       break;
 
@@ -108,13 +118,26 @@ function goForward(rover) {
             rover.position[1] = 9
         }
         else {
-              rover.position[1]--
+
+                    var accident = free_space(rover.position[0], rover.position[1] - 1)
+                    if ( accident === true ) {
+                        alert(myRover.name + " has crashed with an obstacle. GAME OVER!")
+                      }
+
+                     else {
+                        rover.position[1]--
+                      }
         }  
       break;
     }
 
   console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]")
 }
+
+
+
+// ------------------------------------------------------------------------------------
+
 
 
 function goBackward(rover) {
@@ -126,7 +149,14 @@ function goBackward(rover) {
           rover.position[0] = 9
       }
       else {
-          rover.position[0]--
+              var accident = free_space(rover.position[0] - 1, rover.position[1])
+                     if ( accident === true ) {
+                        alert(myRover.name + " has crashed with an obstacle. GAME OVER!")
+                      }
+
+                     else {
+                        rover.position[0]--
+                      }
       }  
       break;
 
@@ -135,8 +165,17 @@ function goBackward(rover) {
           rover.position[1] = 9
       } 
       else {
-          rover.position[1]--
-      }
+
+                    var accident = free_space(rover.position[0], rover.position[1] - 1)
+                     if ( accident === true ) {
+                        alert(myRover.name + " has crashed with an obstacle. GAME OVER!")
+                      }
+
+                     else {
+                        rover.position[1]--
+                      }
+      }     
+
       break;
 
     case 'S':
@@ -144,24 +183,45 @@ function goBackward(rover) {
           rover.position[0] = 0
       }
       else {
-          rover.position[0]++     
+                    var accident = free_space(rover.position[0] + 1, rover.position[1])
+                    if ( accident === true ) {
+                        alert(myRover.name + " has crashed with an obstacle. GAME OVER!")
+                      }
+
+                    else {
+                         rover.position[0]++ 
+                    }  
       }
       break;
+
 
     case 'W':
       if (rover.position[1] === 9 ) {
           rover.position[1] = 0
       }
+ 
       else {
-          rover.position[1]++        
-      }
+                    var accident = free_space(rover.position[0], rover.position[1] + 1)
+                    if ( accident === true ) {
+                        alert(myRover.name + " has crashed with an obstacle. GAME OVER!")
+                      }
+
+                     else {
+                        rover.position[1]++
+                      }
+        }  
       break;
+
+
   };
 
   console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]")
 }
 
 
+
+
+// ------------------------------------------------------------------------------------
 
 function turnRight(rover) {
   switch(rover.direction) {
@@ -184,7 +244,7 @@ function turnRight(rover) {
 
 }
 
-
+// ------------------------------------------------------------------------------------
 
 function turnLeft(rover) {
   switch(rover.direction) {
