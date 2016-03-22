@@ -19,19 +19,47 @@ var myRover = {
 function goForward(rover) {
 
     switch(rover.direction) {
+
+// Define changing positions for each direction of the rover.  
+
       case 'N':
-        rover.position[0]++
+        if (rover.position[0] === 9) {
+            rover.position[0] = 0
+        }
+        else {
+              rover.position[0]++
+        }
       break;
+      
       case 'E':
-        rover.position[1]++
+        if (rover.position[1] === 9) {
+            rover.position[1] = 0
+        }
+        else {
+              rover.position[1]++
+        }        
       break;
+      
       case 'S':
-        rover.position[0]--
+        if (rover.position[0] === 0) {
+            rover.position[0] = 9
+        }
+        else {
+              rover.position[0]-- 
+        }
+
       break;
+
       case 'W':
-        rover.position[1]--
+        if (rover.position[1] === 0) {
+            rover.position[1] = 9
+        }
+        else {
+              rover.position[1]--
+        }
+       
       break;
-  }
+    }
 
   console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]")
 }
